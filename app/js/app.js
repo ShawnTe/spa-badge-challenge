@@ -20,13 +20,13 @@ $(window).bind('hashchange', function(e) {
   console.log(e)
   // var hashlength = 0;
   // hashwith = '';
-  if (location.hash == '') {
-    setSummaryList();
-    document.title = 'Boot Badge'
+  if (location.hash !== '') {
+    setDetailPage();
   }
-  hash = location.hash;
+  setSummaryList();
+  document.title = 'Boot Badge'
+  // hash = location.hash;
   // hashlength = hash.length;
-  setDetailPage();
 
 })
 
@@ -47,10 +47,16 @@ function setSummaryList() {
 
 function setDetailPage(){
   console.log("In the setDetailPage function")
+  $('#summary').hide();
+  console.log(location.hash)
+  var bootId = location.hash.slice(1)
+  $.ajax({
+    url: baseUrl + "boots/" + bootId + "/badges"
+  })
 }
 
 $("a").on("click", function(e){
-  e.preventDefault();
+  // e.preventDefault();
   // show the boot/:id page
   // pull through object ????
   $("h2").append(val.name)
