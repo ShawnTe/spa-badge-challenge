@@ -48,6 +48,10 @@ th {
   text-align: left;
 }
 
+#boot-badges {
+  display: none;
+}
+
 .show-user h1 {
   font-family: 'Courier New', cursive;
   text-align: left;
@@ -307,5 +311,3 @@ th {
   display: inline;
   padding: 3px;
 }
-
-

@@ -46,14 +46,26 @@ function setSummaryList() {
 }
 
 function setDetailPage(){
-  console.log("In the setDetailPage function")
   $('#summary').hide();
-  console.log(location.hash)
   var bootId = location.hash.slice(1)
   $.ajax({
     url: baseUrl + "boots/" + bootId + "/badges"
   })
-}
+  .done(function(response) {
+    console.log(response)
+    console.log("In the setDetailPage done")
+      $("#boot-badges").load('_badges.html', function(){
+        console.log("Tyring to load")
+        // $.each( response, function( key , val) {
+        $('div.description').html(val.description)
+        $('div.points').html(val.total_votes)
+
+
+        // $('this').show().append( loaded _badges )
+
+    }) // close load
+  })  // close done
+}  // set detail page function
 
 $("a").on("click", function(e){
   // e.preventDefault();
